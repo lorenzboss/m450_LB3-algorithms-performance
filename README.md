@@ -22,7 +22,7 @@ To run the performance tests and memory analysis, you need to have the following
 - `memory_profiler` (for memory usage analysis)
 - `timeit` (for performance testing)
 
-You can install the required package(s) using `pip`:
+You can install the required packages using `pip`:
 
 ```bash
 pip install -r requirements.txt
@@ -53,23 +53,21 @@ pip install -r requirements.txt
 
    This will display the memory usage increments during the execution of each sorting algorithm.
 
-# Test and Lint the Code
+## Test and Lint the Code
 
-To run the tests and lint the code, you can use the following commands:
+To run tests and lint the code, use the following commands:
 
 ```bash
+# Lint the code with pylint
 pylint src tests
-```
 
-```bash
+# Lint with flake8 (selecting certain error codes)
 flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-```
 
-```bash
+# Lint with flake8 (checking complexity and line length)
 flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-```
 
-```bash
+# Run tests with pytest and coverage report
 pytest --cov=algorithms --cov-report=term
 ```
 
@@ -107,4 +105,10 @@ is efficient for real-world data and guarantees stable sorting.
 
 - Time complexity: O(n log n)
 - Space complexity: O(n)
-  know if you'd like to make any adjustments or add more specific details!
+
+## Notes
+
+- The algorithms have been selected to demonstrate a wide range of performance, from inefficient (Bubble Sort) to highly
+  efficient (Merge Sort and Quick Sort).
+- The goal of this project is to provide performance insights and a comparative analysis of sorting algorithms,
+  especially in terms of time and memory usage.
