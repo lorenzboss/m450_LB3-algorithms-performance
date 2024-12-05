@@ -58,16 +58,9 @@ pip install -r requirements.txt
 To run tests and lint the code, use the following commands:
 
 ```bash
-# Lint the code with pylint
-pylint src tests
-
-# Lint with flake8 (selecting certain error codes)
 flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-
-# Lint with flake8 (checking complexity and line length)
 flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-# Run tests with pytest and coverage report
+pylint src tests
 pytest --cov=algorithms --cov-report=term
 ```
 
