@@ -1,0 +1,8 @@
+# Testing and linting
+pytest==7.4.2
+pytest-cov==4.1.0
+flake8==6.1.0
+pylint==2.17.5
+
+# Memory profiling
+memory-profiler~=0.61.0
