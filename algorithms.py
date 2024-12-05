@@ -1,3 +1,6 @@
+"""This module contains implementations of various sorting algorithms."""
+
+
 def bubble_sort(arr):
     """Sorts the given list using bubble sort algorithm."""
     length = len(arr)
@@ -10,6 +13,7 @@ def bubble_sort(arr):
 
 
 def merge_sort(arr):
+    """Sorts the given list using merge sort algorithm."""
     if len(arr) > 1:
         mid = len(arr) // 2
         left = arr[:mid]
@@ -41,6 +45,7 @@ def merge_sort(arr):
 
 
 def quick_sort(arr):
+    """Sorts the given list using quick sort algorithm."""
     if len(arr) <= 1:
         return arr
     pivot = arr[len(arr) // 2]

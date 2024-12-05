@@ -1,3 +1,4 @@
+"""Main file for performance tests with sorting algorithms."""
 from utils import generate_random_list
 from performance_tools import timeit_analysis, cprofile_analysis, memory_analysis
 

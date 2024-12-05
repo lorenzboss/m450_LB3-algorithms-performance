@@ -1,3 +1,4 @@
+"""This module contains functions to analyze the performance of the sorting algorithms."""
 import timeit
 import cProfile
 import pstats
@@ -6,6 +7,7 @@ from algorithms import bubble_sort, merge_sort, quick_sort
 
 
 def timeit_analysis(data):
+    """Analyzes the performance of the sorting algorithms using timeit."""
     print("Timeit Analysis:")
     setup = "from algorithms import bubble_sort, merge_sort, quick_sort"
     for algo in ["bubble_sort", "merge_sort", "quick_sort"]:
@@ -15,6 +17,7 @@ def timeit_analysis(data):
 
 
 def cprofile_analysis(data):
+    """Analyzes the performance of the sorting algorithms using cProfile."""
     print("\ncProfile Analysis:")
     for algo in [bubble_sort, merge_sort, quick_sort]:
         profiler = cProfile.Profile()
@@ -28,6 +31,7 @@ def cprofile_analysis(data):
 
 @profile
 def memory_analysis(data):
+    """Analyzes the performance of the sorting algorithms using memory_profiler."""
     bubble_sort(data.copy())
     merge_sort(data.copy())
     quick_sort(data.copy())
