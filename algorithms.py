@@ -1,9 +1,12 @@
 def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n - i - 1):
+    """Sorts the given list using bubble sort algorithm."""
+    length = len(arr)
+    arr = arr.copy()  # Kopiere die Eingabedaten, um sie nicht zu verändern
+    for i in range(length):
+        for j in range(0, length - i - 1):
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
 
 
 def merge_sort(arr):
@@ -12,8 +15,8 @@ def merge_sort(arr):
         left = arr[:mid]
         right = arr[mid:]
 
-        merge_sort(left)
-        merge_sort(right)
+        left = merge_sort(left)
+        right = merge_sort(right)
 
         i = j = k = 0
         while i < len(left) and j < len(right):
@@ -34,6 +37,7 @@ def merge_sort(arr):
             arr[k] = right[j]
             j += 1
             k += 1
+    return arr
 
 
 def quick_sort(arr):
