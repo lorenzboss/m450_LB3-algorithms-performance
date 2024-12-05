@@ -1,8 +1,10 @@
 """This module contains functions to analyze the performance of the sorting algorithms."""
-import timeit
 import cProfile
 import pstats
+import timeit
+
 from memory_profiler import profile
+
 from algorithms import bubble_sort, merge_sort, quick_sort
 
 
