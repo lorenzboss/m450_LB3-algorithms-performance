@@ -25,7 +25,7 @@ To run the performance tests and memory analysis, you need to have the following
 You can install the required package(s) using `pip`:
 
 ```bash
-pip install memory-profiler
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -52,6 +52,26 @@ pip install memory-profiler
    ```
 
    This will display the memory usage increments during the execution of each sorting algorithm.
+
+# Test and Lint the Code
+
+To run the tests and lint the code, you can use the following commands:
+
+```bash
+pylint $(git ls-files '*.py')
+```
+
+```bash
+flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+```
+
+```bash
+flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+```
+
+```bash
+pytest --cov=your_module --cov-report=term
+```
 
 ## Algorithm Implementations
 
@@ -87,4 +107,4 @@ is efficient for real-world data and guarantees stable sorting.
 
 - Time complexity: O(n log n)
 - Space complexity: O(n)
-know if you'd like to make any adjustments or add more specific details!
+  know if you'd like to make any adjustments or add more specific details!
