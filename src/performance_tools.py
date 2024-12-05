@@ -5,7 +5,7 @@ import timeit
 
 from memory_profiler import profile
 
-from algorithms import bubble_sort, merge_sort, quick_sort
+from src.algorithms import bubble_sort, merge_sort, quick_sort
 
 
 def timeit_analysis(data):

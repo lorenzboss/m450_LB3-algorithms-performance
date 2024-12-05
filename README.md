@@ -58,7 +58,7 @@ pip install -r requirements.txt
 To run the tests and lint the code, you can use the following commands:
 
 ```bash
-pylint $(git ls-files '*.py')
+pylint src tests
 ```
 
 ```bash
@@ -70,7 +70,7 @@ flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statist
 ```
 
 ```bash
-pytest --cov=your_module --cov-report=term
+pytest --cov=algorithms --cov-report=term
 ```
 
 ## Algorithm Implementations
