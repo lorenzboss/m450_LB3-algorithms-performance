@@ -3,7 +3,7 @@
 from performance_tools import timeit_analysis, cprofile_analysis, memory_analysis
 from utils import generate_random_list
 
-SIZE = 5000
+SIZE = 16
 
 if __name__ == "__main__":
     print("Performance Tests with Sorting Algorithms")

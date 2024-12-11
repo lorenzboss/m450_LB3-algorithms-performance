@@ -1,3 +1,4 @@
+
 """This module contains implementations of various sorting algorithms."""
 
 
@@ -12,44 +13,75 @@ def bubble_sort(arr):
     return arr
 
 
-def merge_sort(arr):
-    """Sorts the given list using merge sort algorithm."""
-    if len(arr) > 1:
-        mid = len(arr) // 2
-        left = arr[:mid]
-        right = arr[mid:]
+def heapify(arr, n, i):
+    """Ensures the subtree rooted at index `i` is a max heap."""
+    largest = i  # Initialize largest as root
+    left = 2 * i + 1  # Left child index
+    right = 2 * i + 2  # Right child index
 
-        left = merge_sort(left)
-        right = merge_sort(right)
+    # Check if left child is larger than root
+    if left < n and arr[left] > arr[largest]:
+        largest = left
 
-        i = j = k = 0
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                arr[k] = left[i]
-                i += 1
-            else:
-                arr[k] = right[j]
-                j += 1
-            k += 1
+    # Check if right child is larger than the largest so far
+    if right < n and arr[right] > arr[largest]:
+        largest = right
 
-        while i < len(left):
-            arr[k] = left[i]
-            i += 1
-            k += 1
+    # If largest is not root
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]  # Swap
+        heapify(arr, n, largest)  # Recursively heapify the affected subtree
 
-        while j < len(right):
-            arr[k] = right[j]
-            j += 1
-            k += 1
+
+def heap_sort(arr):
+    """Sorts the given list using heap sort algorithm."""
+    arr = arr.copy()  # Kopiere die Eingabedaten, um sie nicht zu verändern
+    n = len(arr)
+
+    # Build a max heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements from the heap one by one
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # Swap
+        heapify(arr, i, 0)
+
     return arr
 
 
-def quick_sort(arr):
-    """Sorts the given list using quick sort algorithm."""
-    if len(arr) <= 1:
-        return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
+def cocktail_shaker_sort(arr):
+    """Sorts the given list using cocktail shaker sort algorithm."""
+    arr = arr.copy()  # Kopiere die Eingabedaten, um sie nicht zu verändern
+    n = len(arr)
+    swapped = True
+    start = 0
+    end = n - 1
+
+    while swapped:
+        swapped = False
+
+        # Von links nach rechts
+        for i in range(start, end):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+
+        # Wenn keine Elemente mehr vertauscht wurden, ist die Liste sortiert
+        if not swapped:
+            break
+
+        # Anpassen des Endpunkts
+        end -= 1
+        swapped = False
+
+        # Von rechts nach links
+        for i in range(end - 1, start - 1, -1):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+
+        # Anpassen des Startpunkts
+        start += 1
+
+    return arr
