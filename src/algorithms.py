@@ -12,18 +12,6 @@ def bubble_sort(arr):
     return arr
 
 
-def quick_sort(arr):
-    """Sort the list using the quick sort algorithm."""
-    arr = arr.copy()  # Ensure immutability
-    if len(arr) <= 1:
-        return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
-
-
 def cocktail_shaker_sort(arr):
     """Sort the list using the cocktail shaker sort algorithm."""
     arr = arr.copy()  # Ensure immutability
@@ -51,3 +39,15 @@ def cocktail_shaker_sort(arr):
         start += 1
 
     return arr
+
+
+def quick_sort(arr):
+    """Sort the list using the quick sort algorithm."""
+    arr = arr.copy()  # Ensure immutability
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
