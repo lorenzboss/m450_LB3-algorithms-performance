@@ -13,41 +13,14 @@ def bubble_sort(arr):
     return arr
 
 
-def heapify(arr, n, i):
-    """Ensures the subtree rooted at index `i` is a max heap."""
-    largest = i  # Initialize largest as root
-    left = 2 * i + 1  # Left child index
-    right = 2 * i + 2  # Right child index
-
-    # Check if left child is larger than root
-    if left < n and arr[left] > arr[largest]:
-        largest = left
-
-    # Check if right child is larger than the largest so far
-    if right < n and arr[right] > arr[largest]:
-        largest = right
-
-    # If largest is not root
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]  # Swap
-        heapify(arr, n, largest)  # Recursively heapify the affected subtree
-
-
-def heap_sort(arr):
-    """Sorts the given list using heap sort algorithm."""
-    arr = arr.copy()  # Kopiere die Eingabedaten, um sie nicht zu verändern
-    n = len(arr)
-
-    # Build a max heap
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-
-    # Extract elements from the heap one by one
-    for i in range(n - 1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]  # Swap
-        heapify(arr, i, 0)
-
-    return arr
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
 
 
 def cocktail_shaker_sort(arr):
