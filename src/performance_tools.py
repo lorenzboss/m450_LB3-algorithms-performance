@@ -4,9 +4,9 @@ import pstats
 import timeit
 
 from memory_profiler import profile
+from pyinstrument import Profiler
 
-from algorithms import quick_sort, cocktail_shaker_sort
-from src.algorithms import bubble_sort
+from algorithms import quick_sort, cocktail_shaker_sort, bubble_sort
 
 
 def timeit_analysis(data):
@@ -40,3 +40,15 @@ def memory_analysis(data):
     cocktail_shaker_sort(data.copy())
     quick_sort(data.copy())
     sorted(data.copy())
+
+
+def pyinstrument_analysis(data):
+    """Analyzes the performance of the sorting algorithms using Pyinstrument."""
+    print("\nPyinstrument Analysis:")
+    profiler = Profiler()
+    profiler.start()
+    bubble_sort(data.copy())
+    cocktail_shaker_sort(data.copy())
+    quick_sort(data.copy())
+    profiler.stop()
+    print(profiler.output_text(unicode=True, color=True))
