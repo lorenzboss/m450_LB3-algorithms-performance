@@ -1,9 +1,9 @@
 """Main file for performance tests with sorting algorithms."""
 
-from performance_tools import timeit_analysis, cprofile_analysis, memory_analysis
+from performance_tools import timeit_analysis, cprofile_analysis, memory_analysis, pyinstrument_analysis
 from utils import generate_random_list
 
-SIZE = 16
+SIZE = 1000
 
 if __name__ == "__main__":
     print("Performance Tests with Sorting Algorithms")
@@ -16,5 +16,8 @@ if __name__ == "__main__":
     # cProfile-Analyse
     cprofile_analysis(data)
 
-    # Memory Profiler-Analyse (TODO: Does not work yet, Bubble sort always wins!)
+    # Memory Profiler-Analyse
     memory_analysis(data)
+
+    # Pyinstrument-Analyse
+    pyinstrument_analysis(data)
