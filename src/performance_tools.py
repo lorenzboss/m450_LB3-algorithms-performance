@@ -12,8 +12,8 @@ from src.algorithms import bubble_sort
 def timeit_analysis(data):
     """Analyzes the performance of the sorting algorithms using timeit."""
     print("Timeit Analysis:")
-    setup = "from algorithms import bubble_sort, quik_sort, cocktail_shaker_sort"
-    for algo in ["bubble_sort", "quik_sort", "cocktail_shaker_sort"]:
+    setup = "from algorithms import bubble_sort, quick_sort, cocktail_shaker_sort"
+    for algo in ["bubble_sort", "quick_sort", "cocktail_shaker_sort"]:
         stmt = f"{algo}(data.copy())"
         time = timeit.timeit(stmt, setup=setup, globals={"data": data}, number=10)
         print(f"{algo}: {time:.5f} seconds")
