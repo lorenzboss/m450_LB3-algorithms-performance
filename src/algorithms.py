@@ -1,11 +1,10 @@
-
-"""This module contains implementations of various sorting algorithms."""
+"""This module implements various sorting algorithms."""
 
 
 def bubble_sort(arr):
-    """Sorts the given list using bubble sort algorithm."""
+    """Sort the list using the bubble sort algorithm."""
     length = len(arr)
-    arr = arr.copy()  # Kopiere die Eingabedaten, um sie nicht zu verändern
+    arr = arr.copy()  # Ensure immutability
     for i in range(length):
         for j in range(0, length - i - 1):
             if arr[j] > arr[j + 1]:
@@ -14,6 +13,8 @@ def bubble_sort(arr):
 
 
 def quick_sort(arr):
+    """Sort the list using the quick sort algorithm."""
+    arr = arr.copy()  # Ensure immutability
     if len(arr) <= 1:
         return arr
     pivot = arr[len(arr) // 2]
@@ -24,37 +25,29 @@ def quick_sort(arr):
 
 
 def cocktail_shaker_sort(arr):
-    """Sorts the given list using cocktail shaker sort algorithm."""
-    arr = arr.copy()  # Kopiere die Eingabedaten, um sie nicht zu verändern
-    n = len(arr)
+    """Sort the list using the cocktail shaker sort algorithm."""
+    arr = arr.copy()  # Ensure immutability
+    length = len(arr)
     swapped = True
     start = 0
-    end = n - 1
+    end = length - 1
 
     while swapped:
         swapped = False
-
-        # Von links nach rechts
+        # Left to right pass
         for i in range(start, end):
             if arr[i] > arr[i + 1]:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
                 swapped = True
-
-        # Wenn keine Elemente mehr vertauscht wurden, ist die Liste sortiert
         if not swapped:
             break
-
-        # Anpassen des Endpunkts
         end -= 1
-        swapped = False
 
-        # Von rechts nach links
+        # Right to left pass
         for i in range(end - 1, start - 1, -1):
             if arr[i] > arr[i + 1]:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
                 swapped = True
-
-        # Anpassen des Startpunkts
         start += 1
 
     return arr
