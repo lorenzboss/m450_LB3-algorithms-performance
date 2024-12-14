@@ -1,6 +1,7 @@
 """Main file for performance tests with sorting algorithms."""
 
-from performance_tools import timeit_analysis, cprofile_analysis, memory_analysis, pyinstrument_analysis
+from performance_tools import timeit_analysis, cprofile_analysis, memory_analysis, \
+    pyinstrument_analysis
 from utils import generate_random_list
 
 if __name__ == "__main__":
