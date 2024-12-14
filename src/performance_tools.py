@@ -11,17 +11,20 @@ from algorithms import quick_sort, cocktail_shaker_sort, bubble_sort
 
 def timeit_analysis(data):
     """Analyzes the performance of the sorting algorithms using timeit."""
-    print("Timeit Analysis:")
+    print(f"\nTimeit Analysis with {len(data)} data records:")
     setup = "from algorithms import bubble_sort, cocktail_shaker_sort, quick_sort"
+    header_format = "{:<25} {:>10}"
+    print(header_format.format("Algorithm", "Time (s)"))
+    print("-" * 35)
     for algo in ["bubble_sort", "cocktail_shaker_sort", "quick_sort"]:
         stmt = f"{algo}(data.copy())"
         time = timeit.timeit(stmt, setup=setup, globals={"data": data}, number=10)
-        print(f"{algo}: {time:.5f} seconds")
+        print(header_format.format(algo, f"{time:.5f}"))
 
 
 def cprofile_analysis(data):
     """Analyzes the performance of the sorting algorithms using cProfile."""
-    print("\ncProfile Analysis:")
+    print(f"\ncProfile Analysis with {len(data)} data records:")
     for algo in [bubble_sort, cocktail_shaker_sort, quick_sort]:
         profiler = cProfile.Profile()
         profiler.enable()
@@ -35,7 +38,7 @@ def cprofile_analysis(data):
 @profile
 def memory_analysis(data):
     """Analyzes the performance of the sorting algorithms using memory_profiler."""
-    print("\nMemory Analysis:")
+    print(f"\nMemory Analysis with {len(data)} data records:")
     bubble_sort(data.copy())
     cocktail_shaker_sort(data.copy())
     quick_sort(data.copy())
@@ -44,7 +47,7 @@ def memory_analysis(data):
 
 def pyinstrument_analysis(data):
     """Analyzes the performance of the sorting algorithms using Pyinstrument."""
-    print("\nPyinstrument Analysis:")
+    print(f"\nPyinstrument Analysis with {len(data)} data records:")
     profiler = Profiler()
     profiler.start()
     bubble_sort(data.copy())
