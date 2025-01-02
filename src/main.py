@@ -12,8 +12,8 @@ if __name__ == "__main__":
     ten_thousand_records = generate_random_list(10000)
 
     # Timeit-Analyse
-    # timeit_analysis(hundred_records)
-    # timeit_analysis(thousand_records)
+    timeit_analysis(hundred_records)
+    timeit_analysis(thousand_records)
     timeit_analysis(ten_thousand_records)
 
     # cProfile-Analyse
@@ -24,5 +24,5 @@ if __name__ == "__main__":
 
     # Pyinstrument-Analyse
     pyinstrument_analysis(thousand_records)
-    # pyinstrument_analysis(hundred_records)
-    # pyinstrument_analysis(ten_thousand_records)
+    pyinstrument_analysis(hundred_records)
+    pyinstrument_analysis(ten_thousand_records)
