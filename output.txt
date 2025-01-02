@@ -1,0 +1,135 @@
+/Users/lorenz/projects/m450_LB3-algorithms-performance/.venv/bin/python /Users/lorenz/projects/m450_LB3-algorithms-performance/src/main.py
+Performance Tests with Sorting Algorithms
+
+Timeit Analysis with 100 data records:
+Algorithm                   Time (s)
+-----------------------------------
+bubble_sort                  0.00306
+cocktail_shaker_sort         0.00280
+quick_sort                   0.00095
+
+Timeit Analysis with 1000 data records:
+Algorithm                   Time (s)
+-----------------------------------
+bubble_sort                  0.35074
+cocktail_shaker_sort         0.30827
+quick_sort                   0.00936
+
+Timeit Analysis with 10000 data records:
+Algorithm                   Time (s)
+-----------------------------------
+bubble_sort                 37.26494
+cocktail_shaker_sort        31.80396
+quick_sort                   0.07250
+
+cProfile Analysis with 10000 data records:
+bubble_sort:
+         5 function calls in 3.695 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    3.695    3.695    3.695    3.695 algorithms.py:4(bubble_sort)
+        2    0.000    0.000    0.000    0.000 {method 'copy' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+cocktail_shaker_sort:
+         5 function calls in 3.160 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    3.160    3.160    3.160    3.160 algorithms.py:15(cocktail_shaker_sort)
+        2    0.000    0.000    0.000    0.000 {method 'copy' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+quick_sort:
+         10005 function calls (8005 primitive calls) in 0.009 seconds
+
+   Ordered by: internal time
+   List reduced from 7 to 5 due to restriction <5>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1000    0.003    0.000    0.003    0.000 algorithms.py:52(<listcomp>)
+     1000    0.002    0.000    0.002    0.000 algorithms.py:50(<listcomp>)
+   2001/1    0.002    0.000    0.009    0.009 algorithms.py:44(quick_sort)
+     1000    0.002    0.000    0.002    0.000 algorithms.py:51(<listcomp>)
+     2002    0.000    0.000    0.000    0.000 {method 'copy' of 'list' objects}
+
+
+
+Memory Analysis with 10000 data records:
+Filename: /Users/lorenz/projects/m450_LB3-algorithms-performance/src/performance_tools.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    38     20.8 MiB     20.8 MiB           1   @profile
+    39                                         def memory_analysis(data):
+    40                                             """Analyzes the performance of the sorting algorithms using memory_profiler."""
+    41     20.8 MiB      0.0 MiB           1       print(f"\nMemory Analysis with {len(data)} data records:")
+    42     10.3 MiB    -10.5 MiB           1       bubble_sort(data.copy())
+    43      8.8 MiB     -1.5 MiB           1       cocktail_shaker_sort(data.copy())
+    44     10.6 MiB      1.8 MiB           1       quick_sort(data.copy())
+    45     10.6 MiB      0.0 MiB           1       sorted(data.copy())
+
+
+
+Pyinstrument Analysis with 1000 data records:
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 10:48:54  Samples:  3
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.069     CPU time: 0.068
+/   _/                      v5.0.0
+
+Profile at /Users/lorenz/projects/m450_LB3-algorithms-performance/src/performance_tools.py:52
+
+0.068 pyinstrument_analysis  performance_tools.py:48
+├─ 0.036 bubble_sort  algorithms.py:4
+├─ 0.031 cocktail_shaker_sort  algorithms.py:15
+└─ 0.001 quick_sort  algorithms.py:44
+   └─ 0.001 quick_sort  algorithms.py:44
+      └─ 0.001 quick_sort  algorithms.py:44
+         └─ 0.001 quick_sort  algorithms.py:44
+            └─ 0.001 quick_sort  algorithms.py:44
+               └─ 0.001 quick_sort  algorithms.py:44
+                  └─ 0.001 quick_sort  algorithms.py:44
+                     └─ 0.001 quick_sort  algorithms.py:44
+                        └─ 0.001 quick_sort  algorithms.py:44
+                           └─ 0.001 quick_sort  algorithms.py:44
+                              └─ 0.001 quick_sort  algorithms.py:44
+                                 └─ 0.001 quick_sort  algorithms.py:44
+                                    └─ 0.001 quick_sort  algorithms.py:44
+                                       └─ 0.001 quick_sort  algorithms.py:44
+
+
+
+Pyinstrument Analysis with 100 data records:
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 10:48:54  Samples:  0
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.001     CPU time: 0.001
+/   _/                      v5.0.0
+
+Profile at /Users/lorenz/projects/m450_LB3-algorithms-performance/src/performance_tools.py:52
+
+No samples were recorded.
+
+
+
+Pyinstrument Analysis with 10000 data records:
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 10:48:54  Samples:  10
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 6.945     CPU time: 6.939
+/   _/                      v5.0.0
+
+Profile at /Users/lorenz/projects/m450_LB3-algorithms-performance/src/performance_tools.py:52
+
+6.944 pyinstrument_analysis  performance_tools.py:48
+├─ 3.748 bubble_sort  algorithms.py:4
+└─ 3.188 cocktail_shaker_sort  algorithms.py:15
+
+
+
+Process finished with exit code 0
