@@ -42,7 +42,7 @@ pip install -r requirements.txt
    sorting a list of
    random numbers.
 
-   **Warning**: The performance tests may take A FEW MINUTES to complete, depending on the size of
+   **Warning**: The performance tests may take **A FEW MINUTES** to complete, depending on the size of
    the input list and the number of iterations.
 
 ## Test and Lint the Code
